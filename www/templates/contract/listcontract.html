@@ -1,0 +1,19 @@
+<ion-view cache-view="false" title="Hợp đồng">
+    <ion-nav-buttons side="secondary">
+        <button class="button button-icon icon icon ion-ios-search-strong" ng-click="showFilterBarContract()">
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list>
+            <div class="item item-icon-left">
+                <i class="icon ion-ios-briefcase" style="color:#0F5BA6"></i>Danh sách hợp đồng
+            </div>
+            <ion-item class="item item-icon-right" href="#/main/menu/view_contract/{{contract.id}}" collection-repeat="contract in contractList">
+                <h2>{{contract.name_value_list.name.value}}</h2>
+                <p>Ngày tạo : {{contract.name_value_list.date_entered.value | moment: 'format': 'DD/MM/YYYY h:mm:ss a'}}</p>
+                <p>Trạng thái : {{contractOptions[contract.name_value_list.status.value]}}</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+        </ion-list>
+    </ion-content>
+
+</ion-view>

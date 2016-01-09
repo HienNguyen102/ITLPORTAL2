@@ -1,0 +1,40 @@
+<!--<div ng-controller="ViewAttachmentCtrl" class="popover">
+    <ion-popover-view>
+        <ion-content>
+        </ion-content>
+    </ion-popover-view>
+    <header class="bar bar-nav">
+        <h1 class="title">PopOver</h1>
+    </header>
+    <ul class="table-view">
+        <li class="table-view-cell">Something</li>
+        <li class="table-view-cell">Something2</li>
+        <li class="table-view-cell">Something3</li>
+    </ul>
+</div>-->
+<ion-popover-view>
+    <ion-header-bar>
+        <h1 class="title">My Popover Title</h1>
+    </ion-header-bar>
+    <ion-content>
+        <!--<div class="list">
+            <a class="item" href="http://learn.ionicframework.com/" target="_blank">
+              Learn Ionic
+            </a>
+            <a class="item" href="http://ionicframework.com/docs/" target="_blank">
+              Documentation
+            </a>
+            <a class="item" href="http://showcase.ionicframework.com/" target="_blank">
+              Showcase
+            </a>
+            <a class="item" href="http://ionicframework.com/submit-issue/" target="_blank">
+              Submit an Issue
+            </a>
+            <a class="item" href="https://github.com/driftyco/ionic" target="_blank">
+              Github Repo
+            </a>
+        </div>-->
+        <!--http://dreamatico.com/data_images/rose/rose-7.jpg-->
+        <img style="width:100%; height:100%" id="image_preview_inpop" ng-src="{{srcSelectedImage}}" alt="{{srcSelectedImage}}" />
+    </ion-content>
+</ion-popover-view>

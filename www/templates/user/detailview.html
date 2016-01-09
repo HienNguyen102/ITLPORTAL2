@@ -1,0 +1,30 @@
+    <ion-view title="Thông tin cá nhân">
+        <ion-nav-buttons side="right">
+          <button class="button button-icon button-clear ion-compose" ng-click="openModal()"></button>
+        </ion-nav-buttons>
+            <ion-content class="padding">
+                <div class="list">
+                    <div class="item item-divider">
+                        <i class="ion-card" style="color:#007AFF"></i> Tên công ty
+                    </div>
+                    <p class="item item-text-wrap">{{userInfo.name}}</p>
+                    <div class="item item-divider">
+                        <i class="ion-android-contact" style="color:#03A14D"></i> Điện thoại
+                    </div>
+                    <p class="item">{{userInfo.phone_office}}</p>
+                    <div class="item item-divider">
+                        <i class="ion-email" style="color:#0E76BD"></i> Email
+                    </div>
+                    <p class="item item-text-wrap">{{userInfo.email}}</p>
+                    <div class="item item-divider">
+                        <i class="ion-ios-location-outline" style="color:#A41600"></i> Địa chỉ
+                    </div>
+                    <p class="item item-icon-right item-text-wrap">{{userInfo.billing_address_street}}<a href="#/main/menu/viewmap/{{userInfo.billing_address_street | encodeURIComponent}}"><i class="icon ion-map"></i></a>
+                    </p>
+                    <div class="item item-divider">
+                        <i class="ion-social-usd-outline" style="color:#F7A21D"></i> Mã số thuế
+                    </div>
+                    <p class="item">{{userInfo.tax_code}}</p>
+                </div>
+            </ion-content>
+    </ion-view>

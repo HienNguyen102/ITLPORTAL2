@@ -1,0 +1,141 @@
+<ion-view title="Chi tiết than phiền" delegate-handle="mainScroll">
+    <ion-pane>
+        <ion-content class="padding">
+            <div class="list">
+                <div class="item item-divider">
+                    <i class="ion-information-circled" style="color:#007AFF"></i> Thông tin than phiền
+                </div>
+                <label class="item item-input" ng-if='shipment !=""'>
+                    <span class="input-label">{{shipmentTitle}}</span>
+                    <span class="item-text-wrap">{{shipment}}</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Tiêu đề:</span>
+                    <span class="item-text-wrap">{{complaint.name.value}}</span>
+                </label>
+                <label class="item item-input" ng-if="records[0].name.value=='Attachment' && complaint.status.value=='New'">
+                    <span class="input-label" ng-if="records[0].name.value=='Attachment'">File đính kèm:</span>
+                    <span ng-if="records[0].name.value=='Attachment'">{{records[0].filename.value}}</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Trạng thái:</span>
+                    <!--<span>{{complaint.status.value}}</span>-->
+                    <span ng-if="complaint.status.value == 'New'">Mới</span>
+                    <span ng-if="complaint.status.value == 'Closed'">Đóng</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Ngày tạo:</span>
+                    <span class="item-text-wrap">{{complaint.date_entered.value}}</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Mô tả:</span>
+                    <span class="item-text-wrap">{{complaint.description.value}}</span>
+                </label>
+                <div class="item card" href="#" ng-repeat="record in records" ng-if="record.name.value!='Attachment' && recordsSize > 0">
+                    <div class="item item-divider">
+                        <p ng-if="record.name.value!='Attachment'">{{record.created_by_name.value}} [{{record.date_entered.value}}]</p>
+                    </div>
+                    <div class="item item-text-wrap" ng-if="record.name.value!='Attachment'">
+                        {{record.description.value}}
+                    </div>
+                    <a href="#/main/menu/show_attachment" class="item item-text-wrap" ng-if='record.filename.value != ""' ng-click="viewAttachmentById(record.id.value)">File đính kèm: <b style="color:#33CD5F">{{record.filename.value}}</b></a>
+                </div>
+                <div ng-if="complaint.status.value=='New'">
+                    <div class="item item-divider">
+                        <i class="ion-checkmark" style="color:#007AFF"></i> Kết thúc than phiền
+                    </div>
+                    <div class="item item-text-wrap">
+                        <p>Nếu quý khách đã hài lòng với sự xử lý của nhân viên, vui lòng đóng yêu cầu lại.</p>
+                        <button class="button icon-left ion-checkmark button-positive" ng-click="close()">Đóng</button>
+                    </div>
+                </div>
+                <br>
+                <div ng-if="complaint.status.value=='New'">
+                    <div class="item item-divider">
+                        <i class="ion-chatbubbles" style="color:#007AFF"></i> Gửi phản hồi
+                    </div>
+                    <div class="item item-text-wrap">
+                        <span>Nếu quý khách chưa hài lòng với sự xử lý của nhân viên, vui lòng gửi phản hồi để nhân viên xử lý lại.</span>
+                        <div class="item item-input-inset">
+                            <label class="item-input-wrapper">
+                                <textarea cols="40" rows="5" placeholder="Nội dung yêu cầu: *" ng-model="dataComment.des"></textarea>
+                            </label>
+                        </div>
+                        <br>
+                        <ion-checkbox ng-model="this.checked" ng-change="sendAttachmentOrNot()">Đính kèm file</ion-checkbox>
+                        <div ng-if="isSendAttachment">
+                            <div class="list">
+                                <div class="item item-divider">
+                                    <i class="ion-paperclip" style="color:#007AFF"></i> Chọn loại file đính kèm
+                                </div>
+                                <div class="item item-text-wrap">
+                                    <!--<label class="item item-input item-select">
+                                    <select ng-model="optAttachment" ng-change="updateTextBtn(optAttachment)">
+                                        <option>File ghi âm</option>
+                                        <option>File hình ảnh</option>
+                                    </select>
+                                </label>-->
+                                    <label class="item item-input item-select">
+                                        <div class="input-label">
+                                            &nbsp;
+                                        </div>
+                                        <select ng-model="optAttachment" ng-change="updateTextBtn(optAttachment)">
+                                            <option>File ghi âm</option>
+                                            <option>File hình ảnh</option>
+                                        </select>
+                                    </label>
+
+                                    <!--<div class="col text-center">-->
+                                    <button class="button button-balanced button-block" ng-click="getAttachment(optAttachment)">
+                                        {{textBtnAction}}
+                                    </button>
+                                    <!--</div>-->
+                                    <div ng-if="showImage">
+                                        <p ng-if="countImagesCapture > 0">Hình đã chụp:</p>
+                                        <img style="width:100%; height: 100%" id="blah" ng-src="{{lastTakePhoto}}" />
+                                        <label class="item item-input" ng-if="countImagesCapture > 0">
+                                            <input type="text" ng-model="dataComment.imageName" placeholder="Đặt tên hình">
+                                        </label>
+                                    </div>
+                                    <div ng-if="sounds.length > 0 && showImage==false">
+                                        <p>File đã ghi âm:</p>
+                                        <ion-list show-delete="false" can-swipe="true">
+                                            <ion-item ng-repeat="sound in sounds" ng-click="play($index)">
+                                                {{sound.name}}
+
+                                                <ion-option-button class="button-assertive" ng-click="delete($index)">Xóa</ion-option-button>
+
+                                            </ion-item>
+                                        </ion-list>
+                                        <div ng-if="sounds.length < 1">
+                                            <p>Bạn chưa có file ghi âm nào</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item item-input-inset" style="margin:0 auto; margin-bottom:50px">
+                            <br>
+                            <button class="button icon-left ion-chatbubble-working button-positive" ng-click="sendComment(dataComment)" style="margin-right:10px">Gửi</button>
+                            <button class="button icon-left ion-ios-refresh-empty button-positive" ng-click="reset()">Làm lại</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ion-content>
+    </ion-pane>
+</ion-view>
+<style>
+    .input-label {
+        width: 50%;
+    }
+    
+    .item-select {
+        width: 100%;
+        /* Or whatever you'd like the width to be */
+    }
+    
+    .item-select select {
+        left: 0;
+    }
+</style>

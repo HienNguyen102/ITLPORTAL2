@@ -1,0 +1,22 @@
+<ion-view title="Báo giá">
+    <ion-nav-buttons side="secondary">
+        <button class="button button-icon icon icon ion-ios-search-strong" ng-click="showFilterBarQuotation()">
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list>
+            <div class="item item-icon-left">
+                <i class="icon ion-ios-paper" style="color:#FEC502"></i>Danh sách báo giá
+            </div>
+            <ion-item class="item item-icon-right" href="#/main/menu/viewquotation/{{quotation.id}}" collection-repeat="quotation in quotelist | filter:keyword">
+                <h2>{{quotation.quote_code}}</h2>
+                <p>Ngày báo giá: {{quotation.quotation_date | moment: 'format': 'DD/MM/YYYY'}}</p>
+                <p>Loại hàng: {{quotation.commodity}}</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+
+                </ion-item>
+
+        </ion-list>
+    </ion-content>
+
+</ion-view>

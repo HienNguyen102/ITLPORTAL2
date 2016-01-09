@@ -1,0 +1,14 @@
+<ion-view view-title="Đăng nhập" ng-controller="LoginCtrl" name="login-view">
+  <ion-content  class="padding">
+              <img style="width:70%; height:70%; margin-left:15%; margin-top:10%; margin-bottom:10%;" src="images/logo.png"/>
+          <label class="item item-input item-icon-left">
+              <i class="ion-person"></i><input type="text" style="margin-left:10px" placeholder="Tên đăng nhập" ng-model="data.user_name">
+          </label>
+          <label class="item item-input item-icon-left">
+              <i class="ion-key"></i> <input type="password" style="margin-left:16px" placeholder="Mật khẩu" ng-model="data.password">
+          </label>
+      </div>
+    <ion-checkbox ng-model="data.isChecked">Ghi nhớ đăng nhập</ion-checkbox>
+      <button class="button icon-center icon ion-log-in button-positive" style="width:100%; margin-top:10px;" ng-click="login(data)"> Đăng nhập</button>
+  </ion-content>
+</ion-view>

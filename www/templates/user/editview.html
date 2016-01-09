@@ -1,0 +1,32 @@
+<div class="modal" ng-controller="EditProfileCtrl">
+      <ion-header-bar class="bar bar-header bar-positive">
+        <h1 class="title">Cập nhật thông tin cá nhân</h1>
+        <button class="button button-clear button-primary" ng-click="closeModal()">Đóng</button>
+      </ion-header-bar>
+      
+      <ion-content class="padding" padding="true">
+        <div class="list">
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Tên công ty</span>
+            <input type="text" placeholder="Tên công ty" ng-model="userInfo.name">
+          </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Điện thoại</span>
+            <input type="text" placeholder="Điện thoại" ng-model="userInfo.phone_office">
+          </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Email</span>
+            <input type="text" placeholder="Email" ng-model="userInfo.email">
+          </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Địa chỉ</span>
+            <input type="text" placeholder="Địa chỉ" g-places-autocomplete ng-model="userInfo.billing_address_street">
+          </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Mã số thuế</span>
+            <input type="text" placeholder="Mã số thuế" ng-model="userInfo.tax_code">
+          </label>
+        </div>
+        <button class="button icon icon-right ion-arrow-right-c button-balanced button-block" ng-click="updateProfile(userInfo)">Cập nhật</button>
+      </ion-content>
+</div>

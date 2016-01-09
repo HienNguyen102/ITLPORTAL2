@@ -1,0 +1,86 @@
+<ion-view title="Chi tiết đặt chổ">
+    <ion-nav-buttons side="secondary">
+        <button class="button button-icon button-clear ion-compose" ng-click="openAddComplaintModal()"></button>
+    </ion-nav-buttons>
+    <ion-content class="padding">
+        <div class="list">
+            <div class="item item-divider">
+                <i class="ion-ios-calendar-outline" style="color:#080"></i> Ngày đặt chổ
+            </div>
+            <p class="item">{{dataBooking.bookingInfo.truck_booking_date.value | moment: 'format': 'DD/MM/YYYY'}}</p>
+            <div class="item item-divider">
+                <i class="ion-ios-pricetags-outline" style="color:#03A14D"></i> Mã đặt chổ
+            </div>
+            <p class="item item-text-wrap">{{dataBooking.bookingInfo.truck_booking_account_code.value}}</p>
+            <div class="item item-divider">
+                <i class="ion-ios-location-outline" style="color:#0E76BD"></i> Nơi đi
+            </div>
+            <p class="item item-icon-right item-text-wrap">{{dataBooking.portArray[dataBooking.bookingInfo.truck_port_from.value]}} <a href="#/main/menu/viewmap/{dataBooking.portArray[dataBooking.bookingInfo.truck_port_from.value] | encodeURIComponent}}"><i class="icon ion-map"></i></a></p>
+            <div class="item item-divider">
+                <i class="ion-ios-location-outline" style="color:#A41600"></i> Nơi đến
+            </div>
+            <p class="item item-icon-right item-text-wrap">{{dataBooking.portArray[dataBooking.bookingInfo.truck_port_to.value]}} <a href="#/main/menu/viewmap/{dataBooking.portArray[dataBooking.bookingInfo.truck_port_to.value] | encodeURIComponent}}"><i class="icon ion-map"></i></a>
+            </p>
+            <div class="item item-divider">
+                <i class="" style="color:#A41600"></i> Loại hàng
+            </div>
+            <p class="item item-text-wrap">{{dataBooking.commodityArray[dataBooking.bookingInfo.truck_commodity.value]}}</p>
+            <div class="item item-divider">
+                <i class="ion-ios-cart-outline" style="color:#080"></i> Số lượng
+            </div>
+            <p class="item item-text-wrap">{{dataBooking.bookingInfo.truck_quantity.value}}</p>
+            <div class="item item-divider">
+                <i class="ion-ios-location-outline" style="color:#A41600"></i> Nơi nhận hàng
+            </div>
+            <p class="item item-icon-right item-text-wrap">{{dataBooking.geoCodeArray[dataBooking.bookingInfo.truck_position_receipt.value]}} <a href="#/main/menu/viewmap/{{dataBooking.geoCodeArray[dataBooking.bookingInfo.truck_position_receipt.value] | encodeURIComponent}}"><i class="icon ion-map"></i></a>
+            </p>
+            <div class="item item-divider">
+                <i class="ion-ios-location-outline" style="color:#A41600"></i> Nơi giao hàng
+            </div>
+            <p class="item item-icon-right item-text-wrap">{{dataBooking.geoCodeArray[dataBooking.bookingInfo.truck_position_delivery.value]}} <a href="#/main/menu/viewmap/{{dataBooking.geoCodeArray[dataBooking.bookingInfo.truck_position_delivery.value] | encodeURIComponent}}"><i class="icon ion-map"></i></a>
+            </p>
+            <div class="item item-divider">
+                <i class="ion-ios-location-outline" style="color:#A41600"></i> Nơi đóng gói
+            </div>
+            <p class="item item-icon-right item-text-wrap">{{dataBooking.geoCodeArray[dataBooking.bookingInfo.truck_position_packing.value]}} <a href="#/main/menu/viewmap/{{dataBooking.geoCodeArray[dataBooking.bookingInfo.truck_position_packing.value] | encodeURIComponent}}"><i class="icon ion-map"></i></a>
+            </p>
+            <div class="item item-divider">
+                <i class="ion-ios-information-outline" style="color:##3F9E06"></i> Trạng thái
+            </div>
+            <p class="item">{{dataBooking.bookingStatusOptions[dataBooking.bookingInfo.truck_status.value]}}</p>
+        </div>
+        <div class="list">
+            <div class="item item-icon-left item-icon-right" ng-click="clickToShow()">
+                <i class="icon ion-ios-list-outline" style="color:#007AFF"></i>Chi tiết yêu cầu
+                <i class="icon ion-ios-arrow-{{iconToggle}}" style="color:#007AFF"></i>
+            </div>
+            <div class="item" collection-repeat="shipmentLine in dataBooking.shipmentLines" href="#" ng-show="toShow">
+                <div class="list">
+
+                    <div class="item item-divider">
+                        <i class="ion-ios-calendar-outline" style="color:#080"></i> Ngày giao hàng
+                    </div>
+                    <p class="item">{{shipmentLine.delivery_date.value | moment: 'format': 'DD/MM/YYYY'}}</p>
+                    <div class="item item-divider">
+                        <i class="ion-ios-cart-outline" style="color:#080"></i> Số lượng
+                    </div>
+                    <p class="item ">{{shipmentLine.quantity.value}}</p>
+                    <div class="item item-divider">
+                        <i class="ion-ios-calendar-outline" style="color:#080"></i> Ngày nhận hàng
+                    </div>
+                    <p class="item">{{shipmentLine.receipt_date.value | moment: 'format': 'DD/MM/YYYY'}}</p>
+                    </p>
+                    <div class="item item-divider">
+                        <i class="ion-ios-calendar-outline" style="color:#080"></i> Ngày bốc/dở hàng
+                    </div>
+                    <p class="item">{{shipmentLine.date_packing_or_unload.value | moment: 'format': 'DD/MM/YYYY'}}</p>
+                    <div class="item item-divider">
+                        <i class="ion-ios-calendar-outline" style="color:#A41600"></i> Ngày kết thúc
+                    </div>
+                    <p class="item">{{shipmentLine.end_date.value | moment: 'format': 'DD/MM/YYYY'}}</p>
+                </div>
+            </div>
+
+        </div>
+    </ion-content>
+</ion-view>

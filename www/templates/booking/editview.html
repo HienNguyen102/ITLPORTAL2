@@ -1,0 +1,50 @@
+<div class="modal" ng-controller="CreateBookingCtrl">
+      <ion-header-bar class="bar bar-header bar-positive">
+        <h1 class="title">Đặt chổ</h1>
+        <button class="button button-clear button-primary" ng-click="closeModal()">Đóng</button>
+      </ion-header-bar>
+      
+      <ion-content class="padding" padding="true">
+        <div class="list">
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Mã đặt hàng</span>
+            <input type="text" placeholder="Mã đặt hàng" ng-model="bookingData.truck_booking_account_code">
+          </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Số lượng</span>
+            <input type="text" placeholder="Số lượng" ng-model="bookingData.quantity">
+          </label>
+        <label style="padding-right:15px;" class="item item-input item-stacked-label">
+            <span class="input-label">Ngày đặt</span><br/>
+                        <ionic-datepicker input-obj="bookingDateObject">
+                <button class="button button-block button-light icon-right icon ion-calendar" style="text-align:left; font-size:11px; padding-left:15px; padding-right:15px;">{{bookingDateObject.inputDate | date: 'dd/MM/yyyy'}}</button>
+            </ionic-datepicker>
+          </label>
+        <label style="padding-right:15px;" class="item item-input item-stacked-label">
+            <span class="input-label">Ngày giao hàng</span><br/>
+            <ionic-datepicker input-obj="dateOfShipmentObject">
+                <button class="button button-block button-light icon-right icon ion-calendar" style="text-align:left; font-size:11px; padding-left:15px; padding-right:15px;">{{dateOfShipmentObject.inputDate | date: 'dd/MM/yyyy'}}</button>
+            </ionic-datepicker>
+          </label>
+               <label style="padding-right:15px;" class="item item-input item-stacked-label">
+            <span class="input-label">Ngày nhận hàng</span><br/>
+            <ionic-datepicker input-obj="dateReceiptObject">
+                <button class="button button-block button-light icon-right icon ion-calendar" style="text-align:left; font-size:11px; padding-left:15px; padding-right:15px;">{{dateReceiptObject.inputDate | date: 'dd/MM/yyyy'}}</button>
+            </ionic-datepicker>
+          </label>
+        <label style="padding-right:15px;" class="item item-input item-stacked-label">
+            <span class="input-label">Ngày bốc/ dở</span><br/>
+            <ionic-datepicker input-obj="datePackingObject">
+                <button class="button button-block button-light icon-right icon ion-calendar" style="text-align:left; font-size:11px; padding-left:15px; padding-right:15px;">{{datePackingObject.inputDate | date: 'dd/MM/yyyy'}}</button>
+            </ionic-datepicker>
+          </label>
+        <label style="padding-right:15px;" class="item item-input item-stacked-label">
+            <span class="input-label">Ngày kết thúc</span><br/>
+            <ionic-datepicker input-obj="dateEndObject">
+                <button class="button button-block button-light icon-right icon ion-calendar" style="text-align:left; font-size:11px; padding-left:15px; padding-right:15px;">{{dateEndObject.inputDate | date: 'dd/MM/yyyy'}}</button>
+            </ionic-datepicker>
+          </label>
+        </div>
+        <button name="btnCreateBooking" id="btnCreateBooking" class="button button-full icon-right ion-arrow-right-c button-balanced" ng-click="sendBooking(bookingData)">Đặt chổ</button>
+      </ion-content>
+</div>

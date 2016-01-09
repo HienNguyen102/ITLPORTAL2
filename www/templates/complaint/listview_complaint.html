@@ -1,0 +1,22 @@
+<ion-view cache-view="false" title="Than phiền">
+    <ion-nav-buttons side="secondary">
+        <button class="button button-icon icon icon ion-ios-search-strong" ng-click="showFilterBar()">
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list>
+            <div class="item item-icon-left">
+                <i class="icon ion-chatbubble-working" style="color:#AC6BD3"></i>Danh sách than phiền
+            </div>
+            <ion-item class="item item-icon-right" href="#/main/menu/view_complaint/{{complaint.name_value_list.id.value}}" collection-repeat="complaint in complaints">
+                <h2>{{complaint.name_value_list.name.value}}</h2>
+                <p>Ngày tạo : {{complaint.name_value_list.date_entered.value | moment: 'format': 'DD/MM/YYYY h:mm:ss a'}}</p>
+                <!--<p>Trạng thái : {{complaint.name_value_list.status.value}}</p>-->
+                <p ng-if="complaint.name_value_list.status.value == 'New'">Trạng thái : Mới</p>
+                <p ng-if="complaint.name_value_list.status.value == 'Closed'">Trạng thái : Đóng</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+                <!--</div>-->
+        </ion-list>
+    </ion-content>
+
+</ion-view>

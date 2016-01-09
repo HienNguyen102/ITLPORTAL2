@@ -1,0 +1,29 @@
+<ion-view view-title="Thực hiện ghi âm">
+    <ion-content class="padding">
+
+        <div class="row">
+            <div class="col">
+
+                <label class="item item-input">
+                    <input type="text" ng-model="sound.name" placeholder="Name">
+                </label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <button class="button button-block button-balanced icon-left ion-android-microphone" ng-click="record()">Ghi âm</button>
+            </div>
+            <div class="col">
+                <button class="button button-block button-balanced icon-left ion-play" ng-click="playInRecordCtrl()">Play</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <button class="button button-block button-positive" ng-click="saveSound()">Lưu</button>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

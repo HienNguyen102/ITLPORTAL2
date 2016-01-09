@@ -1,0 +1,25 @@
+<ion-view title="Thông tin liên hệ">
+    <ion-content>
+        <ion-list>
+            <div class="item item-icon-left">
+                <i class="icon ion-ios-world-outline" style="color:#4F8EF7"></i>Danh sách đại lý
+            </div>
+            <ion-item class="item" collection-repeat="contact in contacts">
+                <div class="item item-divider">
+                    {{contact.name_value_list.name.value}}
+                </div>
+                <p class="item">
+                    <div class="item item-text-wrap item-icon-right">Địa chỉ: {{contact.name_value_list.address.value}}
+                <a href="#/main/menu/viewmap/{{contact.name_value_list.address.value | encodeURIComponent}}"><i class="icon ion-map"></i></a>
+                </div>
+                    <p class="item ">Số điện thoại 1: {{contact.name_value_list.phone_office1.value}}</p>
+                    <p class="item">Số điện thoại 2: {{contact.name_value_list.phone_office2.value}}</p>
+                    <p class="item">Fax: {{contact.name_value_list.phone_fax.value}}</p>
+                    <p class="item">Email: {{contact.name_value_list.email.value}}</p>
+                </p>
+            </ion-item>
+
+        </ion-list>
+    </ion-content>
+
+</ion-view>

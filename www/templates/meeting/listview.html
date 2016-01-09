@@ -1,0 +1,26 @@
+
+    <ion-view cache-view="false" title="Cuộc họp">
+    <ion-nav-buttons side="right">
+        <button class="button button-icon icon icon ion-ios-search-strong" ng-click="showFilterBarMeeting()">
+        </button>
+    </ion-nav-buttons>
+        <ion-nav-buttons side="secondary">
+          <button class="button button-icon button-clear ion-compose" ng-click="meetingModal.show()"></button>
+        </ion-nav-buttons>
+        <ion-content>
+        <ion-list>
+          <div class="item item-icon-left">
+            <i class="icon ion-ios-people" style="color:#F83030"></i>Danh sách cuộc họp
+          </div>
+            <ion-item class="item item-icon-right" href="#/main/menu/viewmeeting/{{meeting.name_value_list.id.value}}" collection-repeat="meeting in meetings | filter:keyword">
+            <h2>{{meeting.name_value_list.name.value}}</h2>
+            <p>Thời gian : {{meeting.name_value_list.date_start.value | moment: 'format': 'DD/MM/YYYY h:mm:ss a'}}</p>
+            <p>Trạng thái : {{meetingStatusOptions[meeting.name_value_list.status.value]}}</p>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+
+        </ion-item>         
+
+        </ion-list>
+      </ion-content>
+
+    </ion-view>

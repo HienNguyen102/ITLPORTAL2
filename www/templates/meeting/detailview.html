@@ -1,0 +1,27 @@
+    <ion-view title="Chi tiết cuộc họp">
+            <ion-content class="padding">
+                <div class="list">
+                    <div class="item item-divider">
+                        <i class="ion-ios-pricetags-outline" style="color:#007AFF"></i> Tiều đề
+                    </div>
+                    <p class="item item-text-wrap">{{meeting.name.value}}</p>
+                    <div class="item item-divider">
+                        <i class="ion-clock" style="color:#03A14D"></i> Thời gian
+                    </div>
+                    <p class="item">{{meeting.date_start.value | moment: 'format': 'DD/MM/YYYY h:mm:ss a Z'}}</p>
+                    <div class="item item-divider">
+                        <i class="ion-ios-paper-outline" style="color:#0E76BD"></i> Nội dung
+                    </div>
+                    <p class="item item-text-wrap">{{meeting.description.value}}</p>
+                    <div class="item item-divider">
+                        <i class="ion-ios-location-outline" style="color:#A41600"></i> Địa điểm
+                    </div>
+                    <p class="item item-icon-right item-text-wrap">{{meeting.location.value}} <a href="#/main/menu/viewmap/{{meeting.location.value | encodeURIComponent}}"><i class="icon ion-map"></i></a>
+                    </p>
+                    <div class="item item-divider">
+                        <i class="ion-ios-information-outline" style="color:##3F9E06"></i> Trạng thái
+                    </div>
+                    <p class="item">{{meeting.status.value}}</p>
+                </div>
+            </ion-content>
+    </ion-view>

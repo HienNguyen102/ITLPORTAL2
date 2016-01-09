@@ -1,0 +1,14 @@
+<ion-view view-title="Xem file {{filenameAttachment}}">
+    <ion-content class="padding">
+
+        <div class="row">
+            <div class="col">
+                <img ng-src="data:image/png;base64,{{srcAttachment}}" style="width:100%; height: 100%" />
+            </div>
+        </div>
+        <div class="row" ng-if="filenameAttachment.indexOf('3gpp') > -1">
+            <img style="width:70%; height:70%; margin-left:15%; margin-top:10%; margin-bottom:10%;" src="images/icon_play.png"/>
+        </div>
+
+    </ion-content>
+</ion-view>

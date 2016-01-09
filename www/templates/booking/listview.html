@@ -1,0 +1,22 @@
+<ion-view cache-view="false" title="Danh sách đặt chổ">
+    <ion-nav-buttons side="secondary">
+        <button class="button button-icon icon icon ion-ios-search-strong" ng-click="showFilterBarBooking()">
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list>
+            <div class="item item-icon-left">
+                <i class="icon ion-android-cart" style="color:#03A14D"></i> Danh sách đặt chổ
+            </div>
+            <ion-item class="item item-icon-right" href="#/main/menu/viewbooking/{{booking.id}}" collection-repeat="booking in bookinglist | filter:keyword">
+                <h2>{{booking.booking_number}}</h2>
+                <p>Ngày đặt chổ: {{booking.booking_date | moment: 'format': 'DD/MM/YYYY'}}</p>
+                <p>Trạng thái: {{bookingStatusOptions[booking.status]}}</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+
+                </ion-item>
+
+        </ion-list>
+    </ion-content>
+
+</ion-view>

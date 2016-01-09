@@ -1,0 +1,21 @@
+<div class="modal" ng-controller="CreateCallCtrl">
+    <ion-header-bar class="bar bar-header bar-positive">
+        <h1 class="title">Tạo yêu cầu cuộc gọi</h1>
+        <button class="button button-clear button-primary" ng-click="closeAddCallModal()">Đóng</button>
+    </ion-header-bar>
+
+    <ion-content class="padding">
+        <div class="list">
+            <label class="item item-input">
+                <input type="text" placeholder="Tiêu đề" ng-model="call.title">
+            </label>
+            <label class="item item-input">
+                <textarea placeholder="Nội dung" ng-model="call.content" rows="4"></textarea>
+            </label>
+            <ionic-datepicker input-obj="datepickerObjForCallDate">
+                <button class="button button-block button-light icon-right icon ion-calendar" style="text-align:left; font-size:11px; padding-left:15px;">{{datepickerObjForCallDate.inputDate | date: 'dd/MM/yyyy'}}</button>
+            </ionic-datepicker>
+        </div>
+        <button class="button icon icon-right ion-arrow-right-c button-balanced button-block" ng-click="sendCall(call)">Gửi</button>
+    </ion-content>
+</div>

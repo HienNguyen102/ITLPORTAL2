@@ -1,0 +1,19 @@
+.item.wrap, .item-content.wrap {
+    white-space: normal;
+}
+
+#map {
+  width: 100%;
+  height: 95%;
+}
+
+.item-avatar i:first-child, .item-avatar .item-img {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 36px;
+    max-width: 40px;
+    max-height: 40px;
+    width: 100%;
+    border-radius: 4px;
+}

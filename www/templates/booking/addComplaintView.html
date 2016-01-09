@@ -1,0 +1,18 @@
+<div class="modal" ng-controller="CreateComplaintCtrl">
+    <ion-header-bar class="bar bar-header bar-positive">
+        <h1 class="title">Tạo than phiền mới</h1>
+        <button class="button button-clear button-primary" ng-click="closeAddComplaintModal()">Đóng</button>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="list">
+            <label class="item item-input">
+                <input type="text" placeholder="Tiêu đề" ng-model="newComplaint.name">
+            </label>
+            <label class="item item-input">
+                <textarea placeholder="Mô tả" ng-model="newComplaint.description" rows="4"></textarea>
+            </label>
+        </div>
+        <button class="button icon icon-right ion-arrow-right-c button-balanced button-block" ng-click="sendNewComplaint(newComplaint)">
+            Gửi</button>
+    </ion-content>
+</div>

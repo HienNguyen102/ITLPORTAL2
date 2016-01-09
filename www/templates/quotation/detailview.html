@@ -1,0 +1,80 @@
+    <ion-view title="Chi tiết báo giá" ng-controller="ViewQuotationCtrl">
+            <ion-content class="padding">
+                <div class="list">
+                    <div class="item item-divider">
+                        <i class="ion-android-locate" style="color:#007AFF"></i> Mã chi nhánh
+                    </div>
+                    <p class="item item-text-wrap">{{data.branchOptions[data.quotation.branch_id.value]}}</p>
+                    <div class="item item-divider">
+                        <i class="ion-code-working" style="color:#007AFF"></i> Mã báo giá
+                    </div>
+                    <p class="item item-text-wrap">{{data.quotation.trucking_quote_code.value}}</p>
+                    <div class="item item-divider">
+                        <i class="ion-ios-calendar-outline" style="color:#03A14D"></i> Ngày báo giá
+                    </div>
+                    <p class="item">{{data.quotation.quotation_date.value | moment: 'format': 'DD/MM/YYYY'}}</p>
+                    <div class="item item-divider">
+                        <i class="ion-ios-paper-outline" style="color:#0E76BD"></i> Hợp đồng
+                    </div>
+                    <p class="item item-text-wrap">{{data.quotation.contract.value}}</p>
+                    <div class="item item-divider">
+                        <i class="ion-ios-calendar-outline" style="color:#080"></i> Ngày hiệu lực
+                    </div>
+                    <p class="item item-icon-right item-text-wrap">
+                        {{data.quotation.effect_date.value | moment: 'format': 'DD/MM/YYYY'}}
+                    </p>
+                    <div class="item item-divider">
+                        <i class="ion-ios-calendar-outline" style="color:#FB0E0E"></i> Ngày hết hạn
+                    </div>
+                    <p class="item">{{data.quotation.expiration.value | moment: 'format': 'DD/MM/YYYY'}}</p>
+                     <div class="item item-divider">
+                        <i class="ion-soup-can" style="color:##3F9E06"></i> Loại hàng
+                    </div>
+                    <p class="item">{{commodity}}</p>
+                </div>
+            <div class="list">
+            <div class="item item-icon-left item-icon-right" ng-click="clickToShow()">
+                <i class="icon ion-arrow-graph-up-right" style="color:#007AFF"></i>Danh sách tuyến
+                <i class="icon ion-ios-arrow-{{iconToggle}}" style="color:#007AFF"></i>
+            </div>
+            <div class="item item-button-right" collection-repeat="route in data.routeList" href="#" ng-show="toShow">
+                <div class="list">
+                  <label class="item item-input item-stacked-label">
+                    <span class="input-label">Nơi đi</span>
+                    <p style="word-break: break-all;
+    white-space: normal;">{{data.portArray[route.port_from.value]}}</p>
+                  </label>
+                  <label class="item item-input item-stacked-label">
+                    <span class="input-label">Nơi đến</span>
+                    <p style="word-break: break-all;
+    white-space: normal;">{{data.portArray[route.port_to.value]}}</p>
+                  </label>
+                  <label class="item item-input item-stacked-label">
+                    <span class="input-label">Khối lượng</span>
+                    <p style="word-break: break-all;
+    white-space: normal;">{{route.weight_value.value}}</p>
+                  </label>
+                 <label class="item item-input item-stacked-label">
+                    <span class="input-label">Đơn vị tính</span>
+                    <p style="word-break: break-all;
+    white-space: normal;" ng-bind-html="data.unitArray[route.unit.value]"></p>
+                  </label>
+                     <label class="item item-input item-stacked-label">
+                    <span class="input-label">Giá đã duyệt</span>
+                    <p style="word-break: break-all;
+    white-space: normal;">{{route.price_final.value | number:0}}</p>
+                  </label>
+                     <label class="item item-input item-stacked-label">
+                    <span class="input-label">Loại tiền</span>
+                    <p style="word-break: break-all;
+    white-space: normal;">{{route.currency.value}}</p>
+                  </label>
+                </div>
+                <button route-id="{{route.id.value}}" name="btnBooking" id="btnBooking" style="margin-top:7px;" class="button button-balanced" ng-click="openModal($event)">
+                    <i class="icon ion-ios-cart"></i>
+                </button>
+            </div>
+
+        </div>
+            </ion-content>
+    </ion-view>
